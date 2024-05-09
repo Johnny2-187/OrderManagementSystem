@@ -1,0 +1,12 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Orders for Product</h2>
+  <ul>
+    {% for order in orders %}
+      <li>
+        Order ID: {{ order.id }} - Customer: {{ order.customer.name }} - Total Price: {{ order.total_price }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

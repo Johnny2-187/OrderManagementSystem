@@ -1,0 +1,19 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <h1>Welcome to the Order Management System</h1>
+    <p>This is a system for managing orders, customers, and products.</p>
+
+    <h2>Recent Orders</h2>
+    {% if orders %}
+        <ul>
+        {% for order in orders %}
+            <li>
+                <a href="{% url 'order_detail' order.id %}">{{ order.product.name }} ordered by {{ order.customer.name }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No recent orders.</p>
+    {% endif %}
+{% endblock %}

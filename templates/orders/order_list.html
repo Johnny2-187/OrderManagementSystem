@@ -1,0 +1,32 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Order List</h1>
+  <a href="{% url 'order_add' %}">Add Order</a>
+  <table style="width:100%; table-layout:fixed;">
+    <tr>
+      <th style="padding: 0 15px;">Order ID</th>
+      <th style="padding: 0 15px;">Customer</th>
+      <th style="padding: 0 15px;">Product</th>
+      <th style="padding: 0 15px;">Quantity</th>
+      <th style="padding: 0 15px;">Total Price</th>
+      <th style="padding: 0 15px;">Order Date</th>
+      <th style="padding: 0 15px;">Action</th>
+    </tr>
+    {% for order in orders %}
+    <tr>
+      <td style="padding: 0 15px;">{{ order.id }}</td>
+      <td style="padding: 0 15px;">{{ order.customer.name }}</td>
+      <td style="padding: 0 15px;">{{ order.product.name }}</td>
+      <td style="padding: 0 15px;">{{ order.quantity }}</td>
+      <td style="padding: 0 15px;">{{ order.total_price }}</td>
+      <td style="padding: 0 15px;">{{ order.order_date }}</td>
+      <td style="padding: 0 15px;"><a href="{% url 'order_delete' order.id %}">Delete</a></td>
+    </tr>
+    {% empty %}
+    {% endfor %}
+{#      <tr>#}
+{#        <td colspan="7">No orders available.</td>#}
+{#      </tr>#}
+  </table>
+{% endblock %}

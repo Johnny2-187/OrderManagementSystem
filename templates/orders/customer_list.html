@@ -1,0 +1,12 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Customer List</h1>
+  <ul>
+    {% for customer in customers %}
+      <li>{{ customer.name }} - {{ customer.email }}</li>
+    {% empty %}
+      <li>No customers available.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
